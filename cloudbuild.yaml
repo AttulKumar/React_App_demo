@@ -7,7 +7,6 @@ steps:
   args:
   - '-c'
   - |
-    gcloud compute ssh instance-ngnix-app --zone asia-south2-a --command "sudo rm -rf /var/www/html/*"
     gcloud compute scp --recurse gs://react_demo_bucket798/* instance-ngnix-app:/var/www/html --zone asia-south2-a
 
 logsBucket: 'gs://react-cicd-log798'
