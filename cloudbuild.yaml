@@ -7,7 +7,7 @@ steps:
   args:
   - '-c'
   - |
-    gcloud compute scp --recurse gs://react_demo_bucket798/* instance-ngnix-app:/var/www/html --zone asia-south2-a
+    gcloud compute ssh instance-ngnix-app --zone asia-south2-a --command "sudo gsutil -m rsync -r gs://react_demo_bucket798 /var/www/html"
 
 logsBucket: 'gs://react-cicd-log798'
 options:
