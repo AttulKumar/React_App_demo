@@ -1,11 +1,4 @@
 steps:
-- name: 'node:14'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    npm install
-    npm run build
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['rsync', '-r', 'build/', 'gs://react_demo_bucket798']
 
