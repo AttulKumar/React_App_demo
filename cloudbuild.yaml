@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['rsync', '-r', 'build/', 'gs://react_demo_bucket798']
+  args: ['rsync', '-r', '/workspace/', 'gs://react_demo_bucket798']
 
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
@@ -9,3 +9,7 @@ steps:
   - |
     gcloud compute ssh instance-ngnix-app --zone asia-south2-a --command "sudo rm -rf /var/www/html/*"
     gcloud compute scp --recurse gs://react_demo_bucket798/* instance-ngnix-app:/var/www/html --zone asia-south2-a
+
+logsBucket: 'gs://react-cicd-log798'
+options:
+  logging: GCS_ONLY
